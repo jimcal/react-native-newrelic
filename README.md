@@ -21,6 +21,14 @@ npm install react-native-newrelic --save
 #### 1. Install New RelicAgent in your project as a pod
 In the Podfile for your project, add the following line:
 `pod 'NewRelicAgent'`
+Also change 
+
+```#target 'reactOne-tvOS' do``` 
+
+to
+
+```target 'reactOne' do```
+
 Make sure Xcode is closed and run: `pod install`
 
 #### 2. Add the project to Xcode
@@ -38,12 +46,7 @@ Add the following:
 
 ``` objective-c
 -(void)setupNewRelic{
-  NSString* token;
-  if(isDebug) {
-    token = @"<your new relic dev token (optional)>";
-  } else {
-    token = @"<your new relic production token";
-  }
+  NSString* token = @"[token without quotes]";
   [NewRelicAgent startWithApplicationToken:token];
 }
 ```
